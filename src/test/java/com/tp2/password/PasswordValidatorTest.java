@@ -9,10 +9,40 @@ class PasswordValidatorTest {
 
     // TODO: Replace these lines with your tests
     @Test
-    void exampleTest(){
-        assertEquals(4, 2 + 1);
+    void testPasswordLength(){
+        PasswordValidator validator = new PasswordValidator();
+        assertTrue(validator.passwordLengthValid("Abcdefgh1!"));
     }
-
+    @Test
+    void testPasswordLengthInvalid(){
+        PasswordValidator validator = new PasswordValidator();
+        assertFalse(validator.passwordLengthValid("Abcdefg"));
+    }
+    @Test
+    void testPasswordUppercase(){
+        PasswordValidator validator = new PasswordValidator();
+        assertFalse(validator.passwordUppercase("abcdefgh"));
+    }
+    @Test
+    void testPasswordLowercase(){
+        PasswordValidator validator = new PasswordValidator();
+        assertFalse(validator.passwordLowercase("ABCDEFG"));
+    }
+    @Test
+    void testPasswordNumber(){
+        PasswordValidator validator = new PasswordValidator();
+        assertFalse(validator.passwordNumber("abcdefg"));
+    }
+    @Test
+    void testPasswordSpecial(){
+        PasswordValidator validator = new PasswordValidator();
+        assertFalse(validator.passwordSpecial("abcdefg"));
+    }
+    @Test
+    void testIsValid(){
+        PasswordValidator validator = new PasswordValidator();
+        assertTrue(validator.isValid("Abcdefgh1!"));
+    }
 //    Missing tests:
 //
 //- Password with less than 8 characters should be invalid
